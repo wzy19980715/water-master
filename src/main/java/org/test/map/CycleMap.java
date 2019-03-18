@@ -1,0 +1,34 @@
+package org.test.map;
+
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.util.StringUtils;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+
+
+public class CycleMap {
+    //  teamId  cycleTeamId
+    public static HashMap<String, String> cycleMap = new HashMap();
+
+    static {
+        PathMatchingResourcePatternResolver patternResolver = new PathMatchingResourcePatternResolver();
+        //name  id
+        Resource resource = patternResolver.getResource("classpath:cycle");
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream(), "UTF-8"));
+            String str;
+            // 按行读取字符串
+            while ((str = br.readLine()) != null) {
+                String[] split = StringUtils.trimAllWhitespace(str).split(",");
+                cycleMap.put(split[2], split[0]);
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

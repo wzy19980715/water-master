@@ -1,0 +1,14 @@
+spring.datasource.url: jdbc:mysql://47.92.254.221:3306/myh2o?characterEncoding=utf8&useSSL=true
+spring.datasource.username: root
+spring.datasource.password: root
+spring.datasource.driver-class-name: com.mysql.jdbc.Driver
+
+nutz.json.mode: compact
+nutz.json.ignore-type: com.msxf.*
+
+nutz.dao.runtime.create: true
+nutz.dao.runtime.migration: true
+nutz.dao.runtime.checkIndex: true
+nutz.dao.runtime.addColumn: true
+nutz.dao.runtime.deleteColumn: true
+nutz.dao.runtime.basepackage: org.test.entity
